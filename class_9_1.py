@@ -107,6 +107,50 @@ access.desc();
 
 #9-6
 class IceCreamShop(Restaurant):
-    def __init__(self, name, cuisine, servered=0, flavor):
-        super(Restaurant, self).__init__(self, name, cuisine, servered=0)
+    def __init__(self, name, cuisine, servered=0, flavor=['strawberry']):
+        super().__init__(name, cuisine, servered)
         self.flavor = flavor
+    def showtype(self):
+        print(self.flavor)
+
+cold = IceCreamShop('ice', 'sweet', 50, ['shit' ,'pee', 'puff'])
+cold.open()
+cold.des()
+cold.showtype()
+
+#9-7
+class Admin(User):
+    def __init__(self, first_name, last_name, gender='male', education='master', login_attempts=0, privileges='super'):
+        super().__init__(first_name, last_name, gender, education, login_attempts)
+        self.privileges = privileges
+
+    def show_privileges(self):
+        print(self.privileges)
+
+God = Admin('jesus', 'christ', 'god', 'none', 57, 'top')
+God.desc()
+God.greetings()
+God.inc_cnt()
+God.reset_cnt()
+God.show_privileges()
+
+#9-8
+class Privileges():
+    def __init__(self, privileges):
+        self.privileges = privileges
+    def show_privileges(self):
+        print('can '+self.privileges)
+
+class Admin(User):
+    def __init__(self, first_name, last_name, privileges, gender='male', education='master', login_attempts=0):
+        super().__init__(first_name, last_name, gender, education, login_attempts)
+        self.privileges = privileges
+
+superman = Admin('clark', 'kent', Privileges('fly'))
+superman.desc()
+superman.greetings()
+superman.inc_cnt()
+superman.reset_cnt()
+superman.privileges.show_privileges()
+
+        

@@ -6,7 +6,7 @@ SyntaxError: invalid syntax
 SyntaxError: invalid syntax
 >>> print(oye)
 Traceback (most recent call last):
-  File "<pyshell#2>", line 1, in <module>
+File "<pyshell#2>", line 1, in <module>
     print(oye)
 NameError: name 'oye' is not defined
 >>> print("oye")
