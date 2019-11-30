@@ -3,6 +3,7 @@ import pygame
 
 from setting import Setting
 from ship import Ship
+import game_functions as gf
 
 def run_game():
     #initial game and make a screen target
@@ -15,14 +16,11 @@ def run_game():
     #begin main loop
     while True:
         #watch keyboard and mouse
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-        #screen fill
-        screen.fill(setting.bg_color)
-        #make drawed screen show        
-        ship.blitme()
-        pygame.display.flip()
+        gf.check_events(ship)
+
+        #refresh screen
+        gf.update_screen(screen, setting, ship)
+       
 run_game()
 
 
