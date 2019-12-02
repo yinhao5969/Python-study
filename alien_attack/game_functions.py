@@ -13,13 +13,17 @@ def check_events(ship, bullets , ai_settings, screen):
             elif event.key == pygame.K_LEFT:                
                 ship.move_left = True
             elif event.key == pygame.K_SPACE:
-                new_bullet = Bullet(ai_settings, screen, ship)
-                bullets.add(new_bullet)
+                fire(ship, bullets , ai_settings, screen)
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 ship.move_right = False
             elif event.key == pygame.K_LEFT:                
                 ship.move_left = False
+
+def fire(ship, bullets , ai_settings, screen):
+    if len(bullets) < ai_settings.bullet_max :
+        new_bullet = Bullet(ai_settings, screen, ship)
+        bullets.add(new_bullet)
 
 def update_screen(screen, setting, ship, bullets):
     #screen fill

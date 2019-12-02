@@ -24,6 +24,11 @@ def run_game():
         ship.update_position()
         bullets.update()
 
+        #delete bullet outside of the screen
+        for bullet in bullets.copy():
+            if bullet.rect.bottom < 0:
+                bullets.remove(bullet) 
+
         #refresh screen
         gf.update_screen(screen, setting, ship, bullets)
        

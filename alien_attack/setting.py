@@ -19,5 +19,6 @@ class Setting():
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = iron
+        self.bullet_max = 3
 
         

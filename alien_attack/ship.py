@@ -9,11 +9,11 @@ class Ship():
         self.image = pygame.image.load('images/YYF.bmp')
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
-        self.center = float(self.rect.centerx)
 
         #put the ship in the central bottom
         self.rect.centerx = self.screen_rect.centerx
-        self.rect.bottom = self.screen_rect.bottom 
+        self.rect.bottom = self.screen_rect.bottom
+        self.center = float(self.rect.centerx)
 
         #initial move action
         self.move_right = False
