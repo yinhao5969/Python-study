@@ -6,7 +6,6 @@ from ship import Ship
 import game_functions as gf
 from bullet import Bullet
 
-
 def run_game():
     #initial game and make a screen target
     pygame.init()
@@ -14,6 +13,8 @@ def run_game():
     screen = pygame.display.set_mode((setting.screen_width, setting.screen_height))
     ship = Ship(setting, screen)
     bullets = Group()
+    aliens = Group()
+    gf.creat_fleet(setting, screen, aliens)
     pygame.display.set_caption(setting.caption)
 
     #begin main loop
@@ -23,6 +24,7 @@ def run_game():
 
         ship.update_position()
         bullets.update()
+        aliens.update()
 
         #delete bullet outside of the screen
         for bullet in bullets.copy():
@@ -30,7 +32,7 @@ def run_game():
                 bullets.remove(bullet) 
 
         #refresh screen
-        gf.update_screen(screen, setting, ship, bullets)
+        gf.update_screen(screen, setting, ship, bullets, aliens)
        
 run_game()
 
