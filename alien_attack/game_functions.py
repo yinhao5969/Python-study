@@ -50,5 +50,32 @@ def creat_fleet(ai_settings, screen, aliens):
     for sequence in range(alien_cnt):
         alien = Alien(ai_settings, screen)
         alien.rect.x = alien.rect.width + alien.rect.width * 2 * sequence
-        alien.x = alien.rect.x
+        alien.center_x = alien.rect.centerx
+        alien.center_y = alien.rect.centery
         aliens.add(alien)
+
+def kill(aliens, bullets):
+    collsions = pygame.sprite.groupcollide(bullets, aliens, True, True)
+
+def check_fleet_get_edge(aliens):
+    for alien in aliens.sprites():
+        screen_rect = alien.screen.get_rect()
+        if alien.rect.right > screen_rect.right:
+            return True
+        elif alien.rect.left < screen_rect.left:
+            return True
+        else:
+            continue
+    
+    return False
+
+def get_fleet_direction(aliens, ai_settings):
+    if check_fleet_get_edge(aliens):
+        ai_settings.fleet_move_directon = -ai_settings.fleet_move_directon
+        
+        for alien in aliens.sprites():
+            #move in vertical dirction
+            alien.center_y += alien.ai_settings.fleet_approach_speed_factor
+            alien.rect.centery = alien.center_y
+
+

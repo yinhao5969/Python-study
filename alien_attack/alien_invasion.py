@@ -17,7 +17,7 @@ def run_game():
     gf.creat_fleet(setting, screen, aliens)
     pygame.display.set_caption(setting.caption)
 
-    #begin main loop
+    #begin main loop 
     while True:
         #watch keyboard and mouse
         gf.check_events(ship, bullets, setting, screen)
@@ -25,11 +25,17 @@ def run_game():
         ship.update_position()
         bullets.update()
         aliens.update()
-
+     
         #delete bullet outside of the screen
         for bullet in bullets.copy():
             if bullet.rect.bottom < 0:
-                bullets.remove(bullet) 
+                bullets.remove(bullet)       
+
+        #move aliens
+        gf.get_fleet_direction(aliens, setting)
+
+        #kill aliens
+        gf.kill(aliens, bullets)
 
         #refresh screen
         gf.update_screen(screen, setting, ship, bullets, aliens)

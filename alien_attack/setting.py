@@ -19,6 +19,12 @@ class Setting():
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = iron
-        self.bullet_max = 3
+        self.bullet_max = 10
+
+        #alien setting
+        self.fleet_move_directon = 3
+        self.fleet_move_speed_factor = 0.2
+        self.fleet_approach_speed_factor = 10.0
+        
 
         
